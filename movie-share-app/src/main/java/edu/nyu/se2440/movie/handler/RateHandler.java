@@ -27,7 +27,7 @@ public class RateHandler implements HandlerInterface {
 
         String[] data = msg.getMsgData().split("\\s");
 
-        if (data.length != 5) {
+        if (data.length != 6) {
             logger.info("length: " + data.length);
 
             peerconn.sendData(new PeerMessage(Constants.ERROR, "Rate: incorrect arguments"));
@@ -43,6 +43,11 @@ public class RateHandler implements HandlerInterface {
 
         int queryHops = Integer.parseInt(data[5].trim());
 
+        if(sender.equals(peer.getId()))
+        {
+            logger.info("Sent by me. Ignore the message");
+            return;
+        }
 
         if (!peer.getPeerMsgIds().containsKey(sender)) {
             peer.getPeerMsgIds().put(sender, new HashMap<>());

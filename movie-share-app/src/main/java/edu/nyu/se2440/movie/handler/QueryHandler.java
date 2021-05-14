@@ -41,6 +41,12 @@ public class QueryHandler implements HandlerInterface {
         String key = data[3].trim();
         int queryHops = Integer.parseInt(data[4].trim());
 
+        if(sender.equals(peer.getId()))
+        {
+            logger.info("Sent by me. Ignore the message");
+            return;
+        }
+
         logger.info("Received movie query: " + key);
 
         peerconn.sendData(new PeerMessage(Constants.REPLY, "Query: ACK"));
