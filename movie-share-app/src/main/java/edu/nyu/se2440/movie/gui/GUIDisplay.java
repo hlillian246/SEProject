@@ -40,7 +40,7 @@ public class GUIDisplay {
         JPanel peerPanel = new JPanel();
         peerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        peerWindow = new JTextArea(5, 20);
+        peerWindow = new JTextArea(5, 23);
         peerWindow.setAlignmentX(Component.CENTER_ALIGNMENT);
         peerWindow.setLineWrap(true);
         peerWindow.setWrapStyleWord(true);
